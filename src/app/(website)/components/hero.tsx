@@ -53,7 +53,7 @@ export default function Hero() {
 				<span>Software</span> <br />
 				<span>Engineer</span> <br /> <br />
 				<b
-				className="text-[1rem] lg:text-[1.5rem]  child-gradient [&>span>div]:text-gradient transition-all duration-75 ease-out [&>div>div]:clip-title [&>*]:clip-title [&>div>span>div>div]:opacity-0"
+				className="text-[1rem] lg:text-[1.5rem]"
 				id="hero-description"
 			>		
 				For Projects And Other Info, visit
@@ -62,7 +62,7 @@ export default function Hero() {
 				<b
 				className="text-[2rem] lg:text-[2.5rem]  child-gradient [&>span>div]:text-gradient transition-all duration-75 ease-out [&>div>div]:clip-title [&>*]:clip-title [&>div>span>div>div]:opacity-0"
 				id="hero-description"
-			>		
+			>	
 				<span>
 					nevish302.vercel.app
 				</span>
