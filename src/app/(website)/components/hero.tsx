@@ -54,7 +54,7 @@ export default function Hero() {
 				<span>Engineer</span> <br /> <br />
 				
 				<a
-				className="text-[2rem] lg:text-[2.5rem]  child-gradient [&>span>div]:text-gradient transition-all duration-75 ease-out [&>div>div]:clip-title [&>*]:clip-title [&>div>span>div>div]:opacity-0"
+				className="text-[2rem] lg:text-[2.5rem]  child-gradient [&>span>div]:text-gradient transition-all duration-75 [&>div>div]:clip-title [&>*]:clip-title [&>div>span>div>div]:opacity-0"
 				id="hero-description"
 				href="https://nevish302.vercel.app"
 			>	
