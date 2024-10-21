@@ -52,21 +52,23 @@ export default function Hero() {
 				Full-Stack <br />
 				<span>Software</span> <br />
 				<span>Engineer</span> <br /> <br />
-				<b
-				className="text-[1rem] lg:text-[1.5rem]"
-				id="hero-description"
-			>		
-				For Projects And Other Info, visit
-				</b>
-				<br />
-				<b
+				
+				<a
 				className="text-[2rem] lg:text-[2.5rem]  child-gradient [&>span>div]:text-gradient transition-all duration-75 ease-out [&>div>div]:clip-title [&>*]:clip-title [&>div>span>div>div]:opacity-0"
 				id="hero-description"
+				href="https://nevish302.vercel.app"
 			>	
 				<span>
 					nevish302.vercel.app
 				</span>
+				<b
+				className="text-[.8rem] lg:text-[.8rem]"
+				id="hero-description"
+			>		
+				&#40;Projects&#41;<br />
 				</b>
+				
+				</a>
 			</h2>
 		</section>
 	);
