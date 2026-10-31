@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Matter from "matter-js";
-import { AnimatePresence, animate, motion, useInView, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, animate, motion, useInView, useMotionValue, useMotionValueEvent, useTransform } from "framer-motion";
 import { RefObject, useEffect, useRef, useState } from "react";
 
 const INK = "#0b0b0f";
@@ -25,6 +25,40 @@ function blip(f = 440, d = 0.08, type: OscillatorType = "sine", g = 0.05) {
 	v.connect(actx.destination);
 	o.start();
 	o.stop(actx.currentTime + d);
+}
+
+/* Scroll progress that does not depend on framer's useScroll: measured from
+   bounding rects so it behaves the same in every browser. */
+function topIn(sc: HTMLElement, el: HTMLElement) {
+	return el.getBoundingClientRect().top - sc.getBoundingClientRect().top + sc.scrollTop;
+}
+
+function useSectionProgress(scroller: RefObject<HTMLDivElement>, target?: RefObject<HTMLElement>) {
+	const p = useMotionValue(0);
+	useEffect(() => {
+		const sc = scroller.current!;
+		const update = () => {
+			let v = 0;
+			if (target) {
+				const el = target.current;
+				if (!el) return;
+				const range = el.offsetHeight - sc.clientHeight;
+				v = range > 0 ? (sc.scrollTop - topIn(sc, el)) / range : 0;
+			} else {
+				const range = sc.scrollHeight - sc.clientHeight;
+				v = range > 0 ? sc.scrollTop / range : 0;
+			}
+			p.set(Math.min(1, Math.max(0, v)));
+		};
+		update();
+		sc.addEventListener("scroll", update, { passive: true });
+		window.addEventListener("resize", update);
+		return () => {
+			sc.removeEventListener("scroll", update);
+			window.removeEventListener("resize", update);
+		};
+	}, [scroller, target, p]);
+	return p;
 }
 
 const WORDS = ["NEVISH", "BUILDS", "THINGS", "PLAY"];
@@ -412,11 +446,7 @@ function Scramble({ text }: { text: string }) {
 function Toys({ scroller }: { scroller: RefObject<HTMLDivElement> }) {
 	const section = useRef<HTMLElement>(null);
 	const track = useRef<HTMLDivElement>(null);
-	const { scrollYProgress } = useScroll({
-		target: section,
-		container: scroller,
-		offset: ["start start", "end end"],
-	});
+	const scrollYProgress = useSectionProgress(scroller, section);
 	const x = useTransform(scrollYProgress, (p) =>
 		track.current ? -p * (track.current.scrollWidth - window.innerWidth) : 0
 	);
@@ -505,17 +535,13 @@ const jobs = [
 function Experience({ scroller }: { scroller: RefObject<HTMLDivElement> }) {
 	const section = useRef<HTMLElement>(null);
 	const [i, setI] = useState(0);
-	const { scrollYProgress } = useScroll({
-		target: section,
-		container: scroller,
-		offset: ["start start", "end end"],
-	});
+	const scrollYProgress = useSectionProgress(scroller, section);
 	useMotionValueEvent(scrollYProgress, "change", (p) =>
 		setI(Math.max(0, Math.min(jobs.length - 1, Math.floor(p * jobs.length))))
 	);
 	const goTo = (n: number) =>
 		scroller.current?.scrollTo({
-			top: section.current!.offsetTop + n * window.innerHeight + 2,
+			top: topIn(scroller.current!, section.current!) + n * scroller.current!.clientHeight + 2,
 			behavior: "smooth",
 		});
 	const j = jobs[i];
@@ -884,7 +910,7 @@ function Chapters({ scroller }: { scroller: RefObject<HTMLDivElement> }) {
 			const mid = el.scrollTop + el.clientHeight / 2;
 			let k = 0;
 			secs.forEach((x, i) => {
-				if (x.offsetTop <= mid) k = i;
+				if (topIn(el, x) <= mid) k = i;
 			});
 			setActive(k);
 		};
@@ -894,7 +920,7 @@ function Chapters({ scroller }: { scroller: RefObject<HTMLDivElement> }) {
 	}, [scroller]);
 	const jump = (k: number) => {
 		const x = scroller.current!.querySelectorAll<HTMLElement>("[data-chapter]")[k];
-		scroller.current!.scrollTo({ top: x.offsetTop, behavior: "smooth" });
+		scroller.current!.scrollTo({ top: topIn(scroller.current!, x), behavior: "smooth" });
 	};
 	return (
 		<div className="absolute right-4 top-1/2 z-10 hidden -translate-y-1/2 flex-col items-end gap-3 text-white mix-blend-difference sm:flex">
@@ -975,7 +1001,7 @@ function Preloader() {
 
 export default function Fun() {
 	const scroller = useRef<HTMLDivElement>(null);
-	const { scrollYProgress } = useScroll({ container: scroller });
+	const scrollYProgress = useSectionProgress(scroller);
 	const [snd, setSnd] = useState(false);
 
 	return (
