@@ -66,6 +66,14 @@ export default function Hero() {
 				
 				</a>
 			</h2>
+			<MagneticComponent>
+				<Link
+					href="/fun"
+					className="mt-6 inline-block rounded-full bg-gradient-logo px-10 py-4 text-3xl tracking-widest text-background transition-transform hover:scale-110"
+				>
+					FUN MODE ✦
+				</Link>
+			</MagneticComponent>
 		</section>
 	);
 }

@@ -34,14 +34,6 @@ export default function Header() {
 					className="h-12 opacity-0"
 				/>
 			</Link>
-			<MagneticComponent>
-				<Link
-					href="/fun"
-					className="rounded-full border border-foreground/40 px-5 py-2 text-xl tracking-widest transition-colors hover:bg-foreground hover:text-background"
-				>
-					FUN MODE ✦
-				</Link>
-			</MagneticComponent>
 			<AnimatePresence mode="wait">
 				{!menu && (
 					<MagneticComponent>
