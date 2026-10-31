@@ -11,7 +11,6 @@ type Project = {
 	stack: string;
 	live?: string;
 	repo?: string;
-	shot?: string;
 };
 
 const projects: Project[] = [
@@ -22,7 +21,6 @@ const projects: Project[] = [
 			"Calorie tracking that shows its work. Log a meal by typing a sentence or snapping a photo, with 6,410 foods and Indian portions (katori, bowl, glass). Workouts are tracked against published sports-science models.",
 		stack: "Flutter · Next.js · Firebase · Liquid Glass shaders",
 		live: "https://crumbcount.vercel.app",
-		shot: "/shots/crumbcount-m.png",
 		repo: "https://github.com/Nevish-302/count-calories",
 	},
 	{
@@ -32,7 +30,6 @@ const projects: Project[] = [
 			"The coffee companion app. Find great coffee nearby, log every brew, time it, and get recipes that fit your gear.",
 		stack: "Next.js · Firebase · Google Places",
 		live: "https://aravaa.com",
-		shot: "/shots/aravaa-m.png",
 	},
 	{
 		title: "orithLabs",
@@ -41,7 +38,6 @@ const projects: Project[] = [
 			"Marketing site for a software development studio, with a lead form backed by Firestore and rules-tested security.",
 		stack: "Next.js 16 · Tailwind 4 · Firebase",
 		live: "https://orithlabs.in",
-		shot: "/shots/orithlabs-m.png",
 	},
 	{
 		title: "Our Little Worlds",
@@ -144,14 +140,6 @@ export default function Projects() {
 							{p.year}
 						</p>
 						<div className="col-span-7 md:col-span-5 space-y-2">
-							{p.shot && (
-								// eslint-disable-next-line @next/next/no-img-element
-								<img
-									src={p.shot}
-									alt={`${p.title} screenshot`}
-									className="mb-4 h-96 w-auto max-w-full rounded-2xl border border-white/10 object-cover object-top"
-								/>
-							)}
 							<h2 className="text-4xl sm:text-6xl leading-[80%] group-hover:text-gradient transition-colors">
 								{p.title}
 							</h2>
