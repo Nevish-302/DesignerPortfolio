@@ -6,8 +6,8 @@ import { AnimatePresence, animate, motion, useInView, useMotionValueEvent, useSc
 import { RefObject, useEffect, useRef, useState } from "react";
 
 const INK = "#0b0b0f";
-const GOLD = "#f5b82e";
-const CORAL = "#ff5b2e";
+const CYAN = "#1ec8ff";
+const RED = "#e5252d";
 const PAPER = "#f4f1ea";
 
 let sound = false;
@@ -55,7 +55,7 @@ function ParticleHero() {
 		// 8 colour steps from lime (calm) to coral (fast)
 		const colors = Array.from({ length: 8 }, (_, i) => {
 			const t = i / 7;
-			return `rgb(${Math.round(245 + 10 * t)},${Math.round(184 - 93 * t)},46)`;
+			return `rgb(${Math.round(30 + 199 * t)},${Math.round(200 - 163 * t)},${Math.round(255 - 210 * t)})`;
 		});
 
 		const sample = (text: string) => {
@@ -310,7 +310,7 @@ function Flashlight() {
 			<div
 				className={`${text} absolute inset-0`}
 				style={{
-					background: `conic-gradient(from 200deg at 50% 50%, ${CORAL}, ${GOLD}, #ff9ec4, #4d6bff, ${CORAL})`,
+					background: `conic-gradient(from 200deg at 50% 50%, ${RED}, ${CYAN}, #4d6bff, ${RED})`,
 					color: INK,
 					maskImage: mask,
 					WebkitMaskImage: mask,
@@ -329,8 +329,8 @@ function Flashlight() {
 /* 4. Tilt cards with a glare that follows the pointer.                */
 /* ------------------------------------------------------------------ */
 const toys: { n: string; title: string; tag: string; from: string; to: string; href: string; shot: string }[] = [
-	{ n: "01", title: "Crumb Count", tag: "Calories that show their work", from: "#ffb347", to: "#ff5e62", href: "https://crumbcount.vercel.app", shot: "/shots/crumbcount-m.png" },
-	{ n: "02", title: "aravaa", tag: "Brew it. Log it. Repeat.", from: "#3b2314", to: "#c68b59", href: "https://aravaa.com", shot: "/shots/aravaa-m.png" },
+	{ n: "01", title: "Crumb Count", tag: "Calories that show their work", from: "#e5252d", to: "#7a0f1a", href: "https://crumbcount.vercel.app", shot: "/shots/crumbcount-m.png" },
+	{ n: "02", title: "aravaa", tag: "Brew it. Log it. Repeat.", from: "#0d2b73", to: "#2f6bff", href: "https://aravaa.com", shot: "/shots/aravaa-m.png" },
 	{ n: "03", title: "orithLabs", tag: "A studio site that takes leads", from: "#2a1aff", to: "#00e0ff", href: "https://orithlabs.in", shot: "/shots/orithlabs-m.png" },
 	{ n: "04", title: "RouteCraft", tag: "AI trips tuned to your personality", from: "#7a5cff", to: "#4d6bff", href: "/projects", shot: "" },
 ];
@@ -427,7 +427,7 @@ function Toys({ scroller }: { scroller: RefObject<HTMLDivElement> }) {
 			<div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
 				<motion.div ref={track} style={{ x }} className="flex w-max items-center gap-[5vw] px-[6vw] will-change-transform">
 					<h2 className="w-[80vw] shrink-0 text-[22vw] leading-[0.85] sm:w-[48vw] sm:text-[12vw]" style={{ color: PAPER }}>
-						<Scramble text="SELECTED" /> <span style={{ color: GOLD }}><Scramble text="TOYS" /></span>
+						<Scramble text="SELECTED" /> <span style={{ color: CYAN }}><Scramble text="TOYS" /></span>
 					</h2>
 					{toys.map((c) => (
 						<div key={c.n} className="w-[78vw] shrink-0 sm:w-[30vw]">
@@ -436,7 +436,7 @@ function Toys({ scroller }: { scroller: RefObject<HTMLDivElement> }) {
 					))}
 				</motion.div>
 				<div className="absolute bottom-10 left-[6vw] right-[6vw] h-px bg-white/20">
-					<motion.div className="h-px" style={{ width: bar, background: GOLD }} />
+					<motion.div className="h-px" style={{ width: bar, background: CYAN }} />
 				</div>
 				<p className="absolute bottom-14 left-[6vw] font-mono text-xs tracking-[0.3em] text-white/50">SCROLL →</p>
 			</div>
@@ -453,7 +453,7 @@ const jobs = [
 		role: "Software Engineer",
 		when: "DEC 2024 TO NOW",
 		year: "2024",
-		bg: GOLD,
+		bg: CYAN,
 		tech: ["Node.js", "Redis", "RabbitMQ", "Whisper", "Gemini", "Juspay"],
 		points: [
 			"Built the answer-sheet evaluation platform from day one: evaluator and reviewer RBAC, org-scoped privileges, freelancer payouts, a collaborative PDF annotation canvas.",
@@ -467,7 +467,7 @@ const jobs = [
 		role: "Contributor · Liquid Galaxy",
 		when: "MAY TO AUG 2024",
 		year: "2024",
-		bg: CORAL,
+		bg: RED,
 		tech: ["Flutter", "Google Earth", "Python", "Docker", "Gemma", "Gemini"],
 		points: [
 			"Worked with the Liquid Galaxy team and mentors on a Flutter app driving Google Earth.",
@@ -527,7 +527,7 @@ function Experience({ scroller }: { scroller: RefObject<HTMLDivElement> }) {
 		<>
 			<section className="px-4 pb-[6vh] pt-[14vh] sm:px-6" style={{ background: INK }}>
 				<h2 className="mx-auto max-w-6xl text-[16vw] leading-[0.85] sm:text-[10vw]" style={{ color: PAPER }}>
-					<Scramble text="THE WORK" /> <span style={{ color: GOLD }}>BEHIND IT</span>
+					<Scramble text="THE WORK" /> <span style={{ color: CYAN }}>BEHIND IT</span>
 				</h2>
 			</section>
 			<section ref={section} className="relative" style={{ height: `${jobs.length * 100}vh` }}>
@@ -688,7 +688,7 @@ function Numbers() {
 }
 
 /* Toolkit playground: floating chips you can grab and throw around. */
-const groupColors = [GOLD, CORAL, "#4d6bff", "#ff9ec4", "#c9b6ff", PAPER];
+const groupColors = [CYAN, RED, "#4d6bff", "#ff9ec4", "#c9b6ff", PAPER];
 
 function Toolkit() {
 	const stage = useRef<HTMLDivElement>(null);
@@ -851,7 +851,7 @@ function Trail() {
 			ctx.lineCap = "round";
 			for (let i = 1; i < pts.length; i++) {
 				const a = 1 - (now - pts[i].t) / 450;
-				ctx.strokeStyle = `rgba(245,184,46,${a * 0.9})`;
+				ctx.strokeStyle = `rgba(30,200,255,${a * 0.9})`;
 				ctx.lineWidth = a * 12;
 				ctx.beginPath();
 				ctx.moveTo(pts[i - 1].x, pts[i - 1].y);
@@ -918,7 +918,7 @@ function Outro() {
 	return (
 		<section
 			className="flex min-h-screen flex-col items-center justify-center gap-10 px-6 py-[10vh] text-center"
-			style={{ background: GOLD, color: INK }}
+			style={{ background: CYAN, color: INK }}
 		>
 			<h2 className="flex text-[28vw] leading-[0.8] sm:text-[22vw]">
 				{"SAY HI".split("").map((ch, i) => (
@@ -933,7 +933,7 @@ function Outro() {
 			<a
 				href="mailto:shiven302@gmail.com"
 				className="rounded-full px-10 py-5 font-mono text-sm tracking-[0.3em] transition-transform hover:scale-110"
-				style={{ background: INK, color: GOLD }}
+				style={{ background: INK, color: CYAN }}
 			>
 				SHIVEN302@GMAIL.COM
 			</a>
@@ -962,7 +962,7 @@ function Preloader() {
 	return (
 		<motion.div
 			className="pointer-events-none absolute inset-0 z-[700] flex items-end justify-between p-6"
-			style={{ background: GOLD, color: INK }}
+			style={{ background: CYAN, color: INK }}
 			initial={{ y: 0 }}
 			animate={{ y: gone ? "-100%" : 0 }}
 			transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
@@ -996,7 +996,7 @@ export default function Fun() {
 			</div>
 			<motion.div
 				className="absolute left-0 top-0 z-10 h-1 w-full origin-left"
-				style={{ scaleX: scrollYProgress, background: CORAL }}
+				style={{ scaleX: scrollYProgress, background: RED }}
 			/>
 			<Chapters scroller={scroller} />
 			<div ref={scroller} className="h-full overflow-y-auto overscroll-contain">
