@@ -6,9 +6,12 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Nav from "./nav";
 import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
 	const [menu, setMenu] = useState(false);
+	const pathname = usePathname();
+	useEffect(() => setMenu(false), [pathname]); // close menu after navigating
 
 	useEffect(() => {
 		if (menu) {
@@ -21,7 +24,7 @@ export default function Header() {
 	}, [menu]);
 
 	return (
-		<header className="flex flex-row items-center justify-between max-w-7xl mx-auto px-10 py-9 relative z-10 min-h-14">
+		<header className="flex flex-row items-center justify-between max-w-7xl mx-auto px-10 py-9 sticky top-0 z-50 min-h-14 pointer-events-none [&_*]:pointer-events-auto">
 			<Link href="/">
 				<Image
 					src="/favicon.svg"

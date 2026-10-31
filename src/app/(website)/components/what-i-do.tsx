@@ -3,7 +3,13 @@ import FadeOnScroll from "../fade-on-scroll";
 import { motion } from "framer-motion";
 
 export default function WhatIDo() {
-	const whatIDo = ["FRONT-END", "BACK-END", "Flutter"];
+	const whatIDo = [
+		{ title: "Web Development", stack: "React · Node.js · Express · Laravel · Flask" },
+		{ title: "Mobile Apps", stack: "Flutter · Android · iOS" },
+		{ title: "Payments & Integrations", stack: "Juspay · CCAvenue · Square · MQTT · OneSignal" },
+		{ title: "Cloud & Databases", stack: "AWS · Firebase · MySQL · MongoDB" },
+		{ title: "Applied AI", stack: "Gemini · Groq · Docker" },
+	];
 	return (
 		<section
 			id="what-i-do"
@@ -21,7 +27,10 @@ export default function WhatIDo() {
 					className="pt-3 sm:pt-5"
 				>
 					<p className="text-4xl sm:text-6xl leading-[80%] w-full max-w-4xl px-10 mb-5 sm:mb-7 mx-auto">
-						{skill}
+						{skill.title}
+						<span className="block text-gradient text-xl sm:text-2xl tracking-widest leading-normal mt-2">
+							{skill.stack}
+						</span>
 					</p>
 					<StringLine />
 				</div>

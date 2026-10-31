@@ -14,8 +14,8 @@ export default function AboutMe() {
 				<motion.div className="space-y-4">
 					<h3 className="text-2xl tracking-[0.6rem] box">About Me</h3>
 					<p className="text-4xl sm:text-6xl child-gradient box">
-					I&apos;m a software Engineer crafting {" "}
-					<span>intuitive interfaces</span> and <span>enhancing digital experiences</span>.
+					I&apos;m a software engineer building <span>web and mobile products</span>,
+					from <span>payment flows</span> and admin dashboards to <span>AI-powered apps</span>.
 					</p>
 				</motion.div>
 			</FadeOnScroll>

@@ -20,19 +20,19 @@ export const metadata: Metadata = {
 		"Full-Stack Developer",
 		"Engineer",
 		"Developer",
-		"Dhaka",
-		"Bangladesh",
+		"Delhi",
+		"India",
 	],
 	openGraph: {
 		title: "Shiven Upadhyay - Portfolio",
 		description: "Full-Stack Software Engineer based in Delhi, India.",
-		images: [{ url: "https://tam11a.dev/screenshot.png" }],
+		images: [{ url: "https://shiven302.vercel.app/screenshot.png" }],
 		type: "website",
 		countryName: "India",
 		emails: ["shiven302@gmail.com"],
-		phoneNumbers: ["+880 1768 161994", "+880 1521 579148"],
+		phoneNumbers: ["+91 8800303359"],
 		siteName: "Shiven Upadhyay - Portfolio",
-		url: "https://tam11a.dev",
+		url: "https://shiven302.vercel.app",
 	},
 	verification: {
 		google: "Z83sG39BadmJ0uyci-ndT3TCQ_sR_edLbjH43hNgRHs",
@@ -48,7 +48,7 @@ const jsonLd: WithContext<Person> = {
 	disambiguatingDescription:
 		"Full-Stack Software Engineer based in Delhi, India.",
 	birthDate: "2002-11-06",
-	email: "shiven302@@gmail.com",
+	email: "shiven302@gmail.com",
 	birthPlace: {
 		"@type": "Place",
 		address: {
@@ -64,12 +64,11 @@ const jsonLd: WithContext<Person> = {
 		addressRegion: "Delhi",
 		addressCountry: "India",
 	},
-	awards: [""],
 	description: "Full-Stack Software Engineer based in Delhi, India.",
 	gender: "Male",
 	jobTitle: "Software Engineer",
-	image: "https://tam11a.dev/tam.jpg",
-	url: "https://tam11a.dev",
+	image: "https://shiven302.vercel.app/tam.jpg",
+	url: "https://shiven302.vercel.app",
 };
 
 export default function RootLayout({

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import NavLink from "./nav-link";
 import Link from "next/link";
+import LinesSVG from "./lines-svg";
 const navItems = [
 	{
 		title: "Home",
@@ -12,13 +13,11 @@ const navItems = [
 	},
 	{
 		title: "Projects",
-		href: "#",
-		disabled: true,
+		href: "/projects",
 	},
 	{
 		title: "Contact",
-		href: "#",
-		disabled: true,
+		href: "/contact",
 	},
 ];
 
@@ -81,7 +80,7 @@ export default function Nav() {
 						</Link>
 						<Link
 							target="_blank"
-							href='https://nevish302.vercel.app/assets/resume-48af6708.pdf'
+							href='/ResumeLatest.pdf'
 							download
 							className="underline underline-offset-4"
 						>
@@ -96,6 +95,7 @@ export default function Nav() {
 					</div>
 				</div>
 				<Curve />
+				
 			</motion.div>
 		</>
 	);

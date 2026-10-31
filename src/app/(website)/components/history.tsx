@@ -4,6 +4,11 @@ import StringLine from "./string-line";
 export default function History() {
 	const history = [
 		{
+			title: "Software Engineer",
+			company: "MadeEasy",
+			date: "Dec 2024 - Now",
+		},
+		{
 			title: "Full Stack Developer (Freelancer)",
 			company: "DotCyan",
 			date: "Now",
@@ -39,7 +44,7 @@ export default function History() {
 						</p>
 						<p className="col-span-7 md:col-span-4 md:leading-8">
 							{job.title} <br />
-							<span className="text-gradient text-xl sm:text-2xl font-semibold tracking-widest">
+							<span className="text-gradient text-xl sm:text-2xl tracking-widest">
 								{job.company}
 							</span>
 						</p>

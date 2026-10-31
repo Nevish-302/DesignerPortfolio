@@ -34,7 +34,7 @@ export default function Footer() {
 					<MagneticComponent>
 						<Link
 							target="_blank"
-							href='https://nevish302.vercel.app/assets/resume-48af6708.pdf'
+							href='/ResumeLatest.pdf'
 							download
 							className="underline underline-offset-4"
 						>
@@ -66,7 +66,7 @@ export default function Footer() {
 						</Link>
 						<Link
 							target="_blank"
-							href="tel:+8801768161994"
+							href="tel:+918800303359"
 							className="flex flex-col"
 						>
 							<span className="text-lg text-gradient">Phone</span>

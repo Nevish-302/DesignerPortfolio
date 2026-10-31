@@ -55,15 +55,13 @@ export default function Hero() {
 				
 				<a
 				className="text-[2rem] lg:text-[2.5rem] font-cover-by-your-grace"
-				id="hero-description"
-				href="https://nevish302.vercel.app"
+				href="/projects"
 			>	
-					nevish302.vercel.app
+					View projects
 				<b
 				className="text-[.8rem] lg:text-[.8rem]"
-				id="hero-description"
-			>		
-				&#40;Projects&#41;<br />
+				>		
+				&#40;Selected work&#41;<br />
 				</b>
 				
 				</a>

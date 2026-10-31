@@ -3,42 +3,47 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
+const SMALL = 50;
+const HOVER = 88;
+const PRESS = 112;
+const LINKS = "a, button, .zoom-button, [role=button]";
+
 export default function Cursor() {
 	useGSAP(() => {
-		const isTouchDevice = "ontouchstart" in window;
-		const createCursorFollower = () => {
-			document.addEventListener("mousemove", (e) => {
-				const { clientX: x, clientY: y } = e;
+		if ("ontouchstart" in window) return;
 
-				gsap.set(".cursor", {
-					x: x + 3,
-					y: y + 3,
-					height: 80,
-					width: 80,
-					xPercent: -50,
-					yPercent: -50,
-					duration: 0.7,
-					opacity: 1,
-					ease: "sine.out(1, 0.3)",
-				});
-			});
+		gsap.set(".cursor", { xPercent: -50, yPercent: -50, width: SMALL, height: SMALL });
+		const moveX = gsap.quickTo(".cursor", "x", { duration: 0.2, ease: "power3.out" });
+		const moveY = gsap.quickTo(".cursor", "y", { duration: 0.2, ease: "power3.out" });
+
+		let hovering = false;
+		const size = (s: number) =>
+			gsap.to(".cursor", { width: s, height: s, duration: 0.3, ease: "power3.out" });
+
+		const onMove = (e: MouseEvent) => {
+			moveX(e.clientX);
+			moveY(e.clientY);
+			gsap.to(".cursor", { opacity: 1, duration: 0.2 });
+			const over = !!(e.target as Element).closest?.(LINKS);
+			if (over !== hovering) {
+				hovering = over;
+				size(over ? HOVER : SMALL);
+			}
 		};
+		const onDown = () => size(PRESS);
+		const onUp = () => size(hovering ? HOVER : SMALL);
+		const onLeave = () => gsap.to(".cursor", { opacity: 0, duration: 0.2 });
 
-		// Hidding the cursor element when the mouse cursor
-		// is moved out of the page
-		document.addEventListener("mouseleave", () => {
-			gsap.set(".cursor", {
-				duration: 0.7,
-				height: 0,
-				width: 0,
-				ease: "sine.out(1, 0.3)",
-			});
-		});
-
-		// Only invoke the function if isn't a touch device
-		if (!isTouchDevice) {
-			createCursorFollower();
-		}
+		document.addEventListener("mousemove", onMove);
+		document.addEventListener("mousedown", onDown);
+		document.addEventListener("mouseup", onUp);
+		document.documentElement.addEventListener("mouseleave", onLeave);
+		return () => {
+			document.removeEventListener("mousemove", onMove);
+			document.removeEventListener("mousedown", onDown);
+			document.removeEventListener("mouseup", onUp);
+			document.documentElement.removeEventListener("mouseleave", onLeave);
+		};
 	}, []);
 
 	return (
