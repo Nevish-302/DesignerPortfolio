@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 
 export default function WhatIDo() {
 	const whatIDo = [
-		{ title: "Web Development", stack: "React · Node.js · Express · Laravel · Flask" },
-		{ title: "Mobile Apps", stack: "Flutter · Android · iOS" },
-		{ title: "Payments & Integrations", stack: "Juspay · CCAvenue · Square · MQTT · OneSignal" },
-		{ title: "Cloud & Databases", stack: "AWS · Firebase · MySQL · MongoDB" },
-		{ title: "Applied AI", stack: "Gemini · Groq · Docker" },
+		{ title: "Backend & APIs", stack: "Node.js · Express · GraphQL · Laravel · Flask · Microservices" },
+		{ title: "Frontend & Mobile", stack: "React · Flutter · Tailwind" },
+		{ title: "Payments & Integrations", stack: "Juspay · CCAvenue · Square · MQTT · OneSignal · CleverTap" },
+		{ title: "Data & Infrastructure", stack: "MySQL · MongoDB · Redis · BigQuery · RabbitMQ · Docker · AWS · Firebase" },
+		{ title: "Applied AI", stack: "Gemini · Gemma · Whisper · LLM evaluation" },
 	];
 	return (
 		<section

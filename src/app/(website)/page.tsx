@@ -1,4 +1,5 @@
 "use client";
+import Achievements from "./components/achievements";
 import AboutMe from "./components/about-me";
 import Clients from "./components/clients";
 import Experience from "./components/experience";
@@ -46,6 +47,7 @@ export default function Home() {
 				<WhatIDo />
 				<Experience />
 				<History />
+				<Achievements />
 				<Clients />
 			</main>
 			<LinesSVG />

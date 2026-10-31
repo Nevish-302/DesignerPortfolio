@@ -11,8 +11,8 @@ export default function Experience() {
 				<motion.div className="space-y-4">
 					<h3 className="text-2xl tracking-[0.6rem]">Experience</h3>
 					<p className="text-4xl sm:text-6xl child-gradient">
-					Over <span>two years</span> shipping production software at MadeEasy, as a freelancer,
-					and as a <span>Google Summer of Code</span> contributor.
+					Over <span>two years</span> building production platforms at MadeEasy: answer-sheet evaluation,
+					<span> payments</span>, and <span>AI-driven</span> assessment and video-to-notes pipelines.
 					</p>
 				</motion.div>
 			</FadeOnScroll>
